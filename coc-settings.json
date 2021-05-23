@@ -14,5 +14,13 @@
     "json",
     "javascriptreact"
   ],
-  "tsserver.formatOnType": false
+  "tsserver.formatOnType": false,
+  "cSpell.userWords": ["Ngomana", "neumorph", "reduxjs"],
+  //explorer
+
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.hiddenRules": {
+    "filenames": ["node_modules", ".git"]
+  }
 }

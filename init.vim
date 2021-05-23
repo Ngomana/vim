@@ -20,9 +20,11 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-"type script highlight for jsx
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+
+"syntax highlighting 
+Plug 'sheerun/vim-polyglot'
+Plug 'kevinoid/vim-jsonc'
+
 " Use release branch (recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "vim tmux navigator, to help switch between split views
@@ -33,10 +35,30 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 
+"Nerd Commentor
+Plug 'preservim/nerdcommenter'
+
 Plug 'https://github.com/tpope/vim-fugitive.git'
 "gruvbox theme
 Plug 'morhetz/gruvbox'
+
+"icons
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
+"
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+"
+" Fugitive
+nnoremap <leader>gs :G<CR>
+nnoremap <leader>gh :diffget //3<CR>
+nnoremap <leader>gu :diffget //2<CR>
 
 
 "solorised set up
@@ -67,6 +89,15 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 set guitablabel=%t
+
+
+"Control P 
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" number of spaces per indentation level: a number or 'auto' (use
+" softtabstop)
+" default: 'auto'
+"
 
 "coc explorer configuration
 nnoremap <space>e :CocCommand explorer<CR>
@@ -118,6 +149,20 @@ let g:coc_explorer_global_presets = {
 \ }
 
 
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
