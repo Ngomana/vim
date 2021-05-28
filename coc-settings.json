@@ -15,7 +15,12 @@
     "javascriptreact"
   ],
   "tsserver.formatOnType": false,
-  "cSpell.userWords": ["Ngomana", "neumorph", "reduxjs"],
+  "cSpell.userWords": [
+    "Ngomana",
+    "Tengo",
+    "neumorph",
+    "reduxjs"
+  ],
   //explorer
 
   "explorer.width": 30,

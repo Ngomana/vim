@@ -3,19 +3,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 syntax on
 "contrl p settings
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll)$',
-	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-	\ }
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-
-
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -24,7 +12,7 @@ Plug 'junegunn/vim-easy-align'
 "syntax highlighting 
 Plug 'sheerun/vim-polyglot'
 Plug 'kevinoid/vim-jsonc'
-
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 " Use release branch (recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "vim tmux navigator, to help switch between split views
@@ -46,7 +34,14 @@ Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
-"
+
+
+"code collapse
+autocmd FileType c setlocal foldmethod=syntax
+
+"control p, file search 
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
@@ -60,6 +55,8 @@ nnoremap <leader>gs :G<CR>
 nnoremap <leader>gh :diffget //3<CR>
 nnoremap <leader>gu :diffget //2<CR>
 
+"nerdcommenter 
+nnoremap <leader> cc : <plug>NERDCommenterToggle
 
 "solorised set up
 set background=dark
@@ -193,19 +190,33 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
+"Vim auto complete
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <S-TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
 
 " Use <c-space> to trigger completion.
 if has('nvim')
