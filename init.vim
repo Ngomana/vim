@@ -2,6 +2,8 @@ set number
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 syntax on
+set ruler "always show current position along the bottom
+
 "contrl p settings
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -35,8 +37,16 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
+"buffers
+map gn :bn<cr>
+map gp :bp<cr>
+map gt :buffers<cr>
 
 "code collapse
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 autocmd FileType c setlocal foldmethod=syntax
 
 "control p, file search 
