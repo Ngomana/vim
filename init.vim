@@ -10,6 +10,7 @@ set ruler "always show current position along the bottom
 call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
+Plug 'easymotion/vim-easymotion'
 
 "syntax highlighting 
 Plug 'sheerun/vim-polyglot'
@@ -19,6 +20,7 @@ Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "vim tmux navigator, to help switch between split views
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dense-analysis/ale'
 
 "vim air line
 Plug 'vim-airline/vim-airline'
@@ -348,3 +350,20 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+"easy motion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
