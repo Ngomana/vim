@@ -12,6 +12,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 
+"Multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
+
 "syntax highlighting 
 Plug 'sheerun/vim-polyglot'
 Plug 'kevinoid/vim-jsonc'
@@ -26,10 +30,16 @@ Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
-
+Plug 'https://github.com/xolox/vim-notes.git'
 "Nerd Commentor
 Plug 'preservim/nerdcommenter'
 
+"Emmet html auto complete
+"add this line to your .vimrc file
+Plug 'mattn/emmet-vim'
+
+
+Plug 'https://tpope.io/vim/surround.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 "gruvbox theme
 Plug 'morhetz/gruvbox'
@@ -66,6 +76,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gh :diffget //3<CR>
 nnoremap <leader>gu :diffget //2<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gpl :Git pull //2<CR>
 
 "nerdcommenter 
 nnoremap <leader> cc : <plug>NERDCommenterToggle
