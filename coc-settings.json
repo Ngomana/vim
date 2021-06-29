@@ -4,6 +4,17 @@
   "diagnostic.infoSign": "⚑",
   "diagnostic.hintSign": "⚑",
   "suggest.noselect": false,
+  "explorer.floating.border.enable": true,
+  "explorer.floating.border.chars": [
+    "─",
+    "│",
+    "─",
+    "│",
+    "┌",
+    "┐",
+    "┘",
+    "└"
+  ],
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
@@ -16,6 +27,9 @@
   ],
   "tsserver.formatOnType": false,
   "cSpell.userWords": [
+    "Borderless",
+    "Entypo",
+    "Ionicons",
     "Ngomana",
     "Numberz",
     "Tengo",

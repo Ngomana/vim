@@ -7,14 +7,18 @@ set ruler "always show current position along the bottom
 "contrl p settings
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+
 call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 
+Plug 'AckslD/nvim-whichkey-setup.lua'
+
 "Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
 
+Plug 'liuchengxu/vim-which-key'
 
 "syntax highlighting 
 Plug 'sheerun/vim-polyglot'
@@ -33,6 +37,7 @@ Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/xolox/vim-notes.git'
 "Nerd Commentor
 Plug 'preservim/nerdcommenter'
+Plug 'https://github.com/xolox/vim-misc.git'
 
 "Emmet html auto complete
 "add this line to your .vimrc file
@@ -44,15 +49,28 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 "gruvbox theme
 Plug 'morhetz/gruvbox'
 
+"Abyss color theme
+Plug 'ulwlu/elly.vim' 
+Plug 'ulwlu/abyss.vim'
+
 "icons
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
+"Which key
+"let g:mapleader = "\<Space>"
+"let g:maplocalleader = ','
+"nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+"nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
 "buffers
 map gn :bn<cr>
 map gp :bp<cr>
 map gt :buffers<cr>
+
+"Notes
+:let g:notes_directories = ['~/schoolNotes/' ]
 
 "code collapse
 set foldmethod=indent   
@@ -86,11 +104,15 @@ nnoremap <leader> cc : <plug>NERDCommenterToggle
 "solorised set up
 set background=dark
 let g:solarized_termcolors=256
-syntax enable
-colorscheme solarized
+colorscheme abyss
+set termguicolors
+"let g:elly_termmode="cterm"
+
 
 "theming vim vim airline
-let g:airline_theme='deus'
+"let g:airline_theme='deus'
+let g:airline_theme='elly'
+
 let g:airline#extensions#tabline#enabled = 1
 
 "escape mapping
@@ -365,6 +387,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
+"Ale Linting
+
 "easy motion
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
@@ -380,3 +404,8 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+
+"jumping to next error
+nmap <silent> <leader>j :ALENext<cr>
+nmap <silent> <leader>k :ALEPrevious<cr>
