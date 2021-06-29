@@ -59,10 +59,10 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "Which key
-"let g:mapleader = "\<Space>"
-"let g:maplocalleader = ','
-"nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-"nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 "buffers
 map gn :bn<cr>
@@ -145,9 +145,10 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 "coc explorer configuration
 nnoremap <space>e :CocCommand explorer<CR>
-nnoremap <space>ef :CocCommand explorer --preset floating<CR>
+nnoremap <space>f :CocCommand explorer --preset floating<CR>
 nnoremap <space>ec :CocCommand explorer --preset cocConfig<CR>
 nnoremap <space>eb :CocCommand explorer --preset buffer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 let g:coc_explorer_global_presets = {
 \   '.vim': {
 \     'root-uri': '~/.vim',
@@ -409,3 +410,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 "jumping to next error
 nmap <silent> <leader>j :ALENext<cr>
 nmap <silent> <leader>k :ALEPrevious<cr>
+
+
+"which key source file 
+      source $HOME/.config/nvim/which-key.vim

@@ -4,7 +4,14 @@
   "diagnostic.infoSign": "⚑",
   "diagnostic.hintSign": "⚑",
   "suggest.noselect": false,
+  "explorer.icon.enableVimDevicons": true,
+"explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": true,
   "explorer.floating.border.enable": true,
+  "explorer.keyMappings": {
+    "<cr>": ["explandable?", "expand", "open"],
+    "v": "open:vsplit"
+  },
   "explorer.floating.border.chars": [
     "─",
     "│",
