@@ -145,9 +145,10 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 "coc explorer configuration
 nnoremap <space>e :CocCommand explorer<CR>
-nnoremap <space>f :CocCommand explorer --preset floating<CR>
+nnoremap <space>ef :CocCommand explorer --preset floating<CR>
 nnoremap <space>ec :CocCommand explorer --preset cocConfig<CR>
 nnoremap <space>eb :CocCommand explorer --preset buffer<CR>
+
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 let g:coc_explorer_global_presets = {
 \   '.vim': {
@@ -372,7 +373,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>a  :<C-u>CocAction<cr>
 " Manage extensions.
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
