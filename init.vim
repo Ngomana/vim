@@ -4,6 +4,14 @@ syntax enable
 syntax on
 set ruler "always show current position along the bottom
 
+
+"Setting Neo vim transparent background
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+
+au ColorScheme * hi Normal ctermbg=none guibg=none
+au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
+
 "contrl p settings
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -34,6 +42,8 @@ Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
+Plug 'https://github.com/tomasr/molokai.git'
+
 Plug 'https://github.com/xolox/vim-notes.git'
 "Nerd Commentor
 Plug 'preservim/nerdcommenter'
@@ -102,16 +112,19 @@ nnoremap <leader>gpl :Git pull //2<CR>
 nnoremap <leader> cc : <plug>NERDCommenterToggle
 
 "solorised set up
-set background=dark
 let g:solarized_termcolors=256
-colorscheme abyss
-set termguicolors
-"let g:elly_termmode="cterm"
+set background=dark
+"colorscheme molokai
+colorscheme solarized
+"set termguicolors
+let g:elly_termmode="cterm"
+let g:molokai_original = 1
+let g:rehash256 = 1
+
 
 
 "theming vim vim airline
-"let g:airline_theme='deus'
-let g:airline_theme='elly'
+let g:airline_theme='deus'
 
 let g:airline#extensions#tabline#enabled = 1
 
