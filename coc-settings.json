@@ -1,27 +1,26 @@
 {
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+    }
+  },
+
   "diagnostic.errorSign": "✖",
   "diagnostic.warningSign": "⚑",
   "diagnostic.infoSign": "⚑",
   "diagnostic.hintSign": "⚑",
   "suggest.noselect": false,
-  "explorer.icon.enableVimDevicons": true,
-"explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.source": "vim-devicons",
+  "explorer.previewAction.onHover": false,
   "explorer.floating.border.enable": true,
   "explorer.keyMappings": {
     "<cr>": ["explandable?", "expand", "open"],
     "v": "open:vsplit"
   },
-  "explorer.floating.border.chars": [
-    "─",
-    "│",
-    "─",
-    "│",
-    "┌",
-    "┐",
-    "┘",
-    "└"
-  ],
+  "explorer.floating.border.chars": ["─", "│", "─", "│", "┌", "┐", "┘", "└"],
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
@@ -34,21 +33,28 @@
   ],
   "tsserver.formatOnType": false,
   "cSpell.userWords": [
+    "Athlon",
     "Aval",
     "Borderless",
     "Entypo",
+    "Hackathon",
     "Ionicons",
+    "Kulungwana",
+    "Marz",
+    "Mazivhe",
     "Ngomana",
     "Numberz",
+    "Opps",
     "Tengo",
+    "bson",
     "neumorph",
     "reduxjs",
     "routebutton"
   ],
   //explorer
 
-  "explorer.width": 30,
-  "explorer.icon.enableNerdfont": true,
+  "explorer.width": 35,
+  //"explorer.icon.enableNerdfont": true,
   "explorer.file.hiddenRules": {
     "filenames": ["node_modules", ".git"]
   }

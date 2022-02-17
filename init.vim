@@ -1,3 +1,8 @@
+
+"if exists('g:vscode')
+    "" VSCode extension
+"else
+    " ordinary neovim
 set number relativenumber 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
@@ -6,11 +11,11 @@ set ruler "always show current position along the bottom
 
 
 "Setting Neo vim transparent background
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
+"highlight Normal ctermbg=none
+"highlight NonText ctermbg=none
 
-au ColorScheme * hi Normal ctermbg=none guibg=none
-au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
+"au ColorScheme * hi Normal ctermbg=none guibg=none
+"au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
 
 "contrl p settings
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -20,7 +25,7 @@ call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
-
+Plug 'antonk52/bad-practices.nvim'
 Plug 'AckslD/nvim-whichkey-setup.lua'
 
 "Multiple cursors
@@ -36,15 +41,19 @@ Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "vim tmux navigator, to help switch between split views
 Plug 'christoomey/vim-tmux-navigator'
+
+"ale linter
 Plug 'dense-analysis/ale'
 
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
+"Plug 'https://github.com/ap/vim-css-color'
 "vim air line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/tomasr/molokai.git'
 
-Plug 'https://github.com/xolox/vim-notes.git'
 "Nerd Commentor
 Plug 'preservim/nerdcommenter'
 Plug 'https://github.com/xolox/vim-misc.git'
@@ -82,6 +91,13 @@ map gt :buffers<cr>
 "Notes
 :let g:notes_directories = ['~/schoolNotes/' ]
 
+"bad practises
+"require('bad_practices.nvim').setup({
+    "most_splits = 3, -- how many splits are considered a good practice(default: 3)
+    "most_tabs = 3, -- how many tabs are considered a good practice(default: 3)
+    "max_hjkl = 10, -- how many times you can spam hjkl keys in a row(default: 10)
+"})
+
 "code collapse
 set foldmethod=indent   
 set foldnestmax=10
@@ -114,14 +130,34 @@ nnoremap <leader> cc : <plug>NERDCommenterToggle
 "solorised set up
 let g:solarized_termcolors=256
 set background=dark
-"colorscheme molokai
 colorscheme solarized
 "set termguicolors
 let g:elly_termmode="cterm"
-let g:molokai_original = 1
-let g:rehash256 = 1
+"let g:molokai_original = 1
+"let g:rehash256 = 1
 
 
+"css colors
+" All possible highlighters
+let g:Hexokinase_highlighters = [
+\   'virtual',
+\   'sign_column',
+\   'background',
+\   'backgroundfull',
+\   'foreground',
+\   'foregroundfull'
+\ ]
+
+" All possible values
+let g:Hexokinase_optInPatterns = [
+\     'full_hex',
+\     'triple_hex',
+\     'rgb',
+\     'rgba',
+\     'hsl',
+\     'hsla',
+\     'colour_names'
+\ ]
 
 "theming vim vim airline
 let g:airline_theme='deus'
@@ -129,6 +165,7 @@ let g:airline_theme='deus'
 let g:airline#extensions#tabline#enabled = 1
 
 "escape mapping
+imap ff <Esc>
 imap jj <Esc>
 imap jk <Esc>
 imap kj <Esc>
@@ -150,7 +187,7 @@ set guitablabel=%t
 
 "Control P 
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|ios\|macos\|android\'
 " number of spaces per indentation level: a number or 'auto' (use
 " softtabstop)
 " default: 'auto'
@@ -426,5 +463,8 @@ nmap <silent> <leader>j :ALENext<cr>
 nmap <silent> <leader>k :ALEPrevious<cr>
 
 
+"fzf --bind 'ctrl-x:execute(vim {} < /dev/tty)'
+
 "which key source file 
       source $HOME/.config/nvim/which-key.vim
+"endif
