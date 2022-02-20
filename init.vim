@@ -22,14 +22,7 @@ set ruler "always show current position along the bottom
 
 
 call plug#begin('~/.vim/plugged')
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
-Plug 'antonk52/bad-practices.nvim'
-Plug 'AckslD/nvim-whichkey-setup.lua'
-
-"Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
 
 Plug 'liuchengxu/vim-which-key'
 
@@ -45,23 +38,17 @@ Plug 'christoomey/vim-tmux-navigator'
 "ale linter
 Plug 'dense-analysis/ale'
 
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-"Plug 'https://github.com/ap/vim-css-color'
 "vim air line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
-Plug 'https://github.com/tomasr/molokai.git'
 
 "Nerd Commentor
 Plug 'preservim/nerdcommenter'
 Plug 'https://github.com/xolox/vim-misc.git'
 
-"Emmet html auto complete
 "add this line to your .vimrc file
 Plug 'mattn/emmet-vim'
-
 
 Plug 'https://tpope.io/vim/surround.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -91,12 +78,6 @@ map gt :buffers<cr>
 "Notes
 :let g:notes_directories = ['~/schoolNotes/' ]
 
-"bad practises
-"require('bad_practices.nvim').setup({
-    "most_splits = 3, -- how many splits are considered a good practice(default: 3)
-    "most_tabs = 3, -- how many tabs are considered a good practice(default: 3)
-    "max_hjkl = 10, -- how many times you can spam hjkl keys in a row(default: 10)
-"})
 
 "code collapse
 set foldmethod=indent   
@@ -125,6 +106,7 @@ nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gpl :Git pull //2<CR>
 
 "nerdcommenter 
+filetype plugin on
 nnoremap <leader> cc : <plug>NERDCommenterToggle
 
 "solorised set up
