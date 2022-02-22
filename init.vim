@@ -62,6 +62,9 @@ Plug 'ulwlu/abyss.vim'
 "icons
 Plug 'ryanoasis/vim-devicons'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end()
 
 "Which key
@@ -96,6 +99,13 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+"
+"resize panel
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+
+
+
 "
 " Fugitive
 nnoremap <leader>gs :G<CR>
@@ -444,6 +454,18 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 nmap <silent> <leader>j :ALENext<cr>
 nmap <silent> <leader>k :ALEPrevious<cr>
 
+" telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "fzf --bind 'ctrl-x:execute(vim {} < /dev/tty)'
 
