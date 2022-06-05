@@ -10,18 +10,13 @@ syntax on
 set ruler "always show current position along the bottom
 
 
-"Setting Neo vim transparent background
-"highlight Normal ctermbg=none
-"highlight NonText ctermbg=none
-
-"au ColorScheme * hi Normal ctermbg=none guibg=none
-"au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
-
-"contrl p settings
-"set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 
 call plug#begin('~/.vim/plugged')
+"scroll
+Plug 'karb94/neoscroll.nvim'
+
+
+
 Plug 'easymotion/vim-easymotion'
 
 Plug 'liuchengxu/vim-which-key'
@@ -36,7 +31,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
 
 "ale linter
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 
 "vim air line
 Plug 'vim-airline/vim-airline'
@@ -232,7 +227,7 @@ let g:coc_explorer_global_presets = {
 \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
 \   },
 \   'buffer': {
-\     'sources': [{'name': 'buffer', 'expand': v:true}]
+\     'sources': [{'name': 'buffer', 'expand': 'v:true'}]
 \   },
 \ }
 
@@ -325,6 +320,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <leader> j <cmd>(coc-diagnostic-next)
+nmap <silent> <leader> k <cmd>(coc-diagnostic-prev)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -449,10 +446,13 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
+"scroll
+"lua require('neoscroll').setup()
+
 
 "jumping to next error
-nmap <silent> <leader>j :ALENext<cr>
-nmap <silent> <leader>k :ALEPrevious<cr>
+"nmap <silent> <leader>j :ALENext<cr>
+"nmap <silent> <leader>k :ALEPrevious<cr>
 
 " telescope
 " Find files using Telescope command-line sugar.
@@ -468,6 +468,25 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "fzf --bind 'ctrl-x:execute(vim {} < /dev/tty)'
+
+"reveal slide
+" Create slides from the whole file
+nmap <Leader>r <Plug>(coc-reveal-it)
+" Create slides from the selected lines
+vmap <Leader>r <Plug>(coc-reveal-it-v)
+
+"Mark down
+nmap <leader>mp :CocCommand markdown-preview-enhanced.openPreview<cr>
+nmap <leader>sp :CocComaand markdown-preview-enhanced.syncPreview<cr>
+
+" Create markmap from the whole file
+nmap <Leader>m <Plug>(coc-markmap-create)
+" Create markmap from the selected lines
+vmap <Leader>m <Plug>(coc-markmap-create-v)
+
+"To do app
+
+
 
 "which key source file 
       source $HOME/.config/nvim/which-key.vim

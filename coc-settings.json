@@ -40,16 +40,27 @@
     "Hackathon",
     "Ionicons",
     "Kulungwana",
+    "Lunarr",
+    "Luniar",
+    "MVCC",
+    "Malcom",
     "Marz",
     "Mazivhe",
     "Ngomana",
     "Numberz",
     "Opps",
+    "Rockstar",
     "Tengo",
     "bson",
+    "chakra",
+    "datepicker",
     "neumorph",
+    "personhood",
     "reduxjs",
-    "routebutton"
+    "routebutton",
+    "rxdb",
+    "todos",
+    "uuidv"
   ],
   //explorer
 
@@ -57,5 +68,6 @@
   //"explorer.icon.enableNerdfont": true,
   "explorer.file.hiddenRules": {
     "filenames": ["node_modules", ".git"]
-  }
+  },
+  "markdown-preview-enhanced.previewTheme": "atom-material.css"
 }
