@@ -15,10 +15,21 @@ return require('packer').startup(function(use)
   }
 
   use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
+
+  require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
 
   vim.cmd('colorscheme rose-pine')
   use( 'nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
-  use("theprimeagen/harpoon")
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
 
@@ -52,6 +63,12 @@ return require('packer').startup(function(use)
    use 'preservim/nerdcommenter'
    use 'morhetz/gruvbox'
    use 'ryanoasis/vim-devicons'
+
+   -- auot pairs, auto opening and closing brackets
+   use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
 
 
 end)
