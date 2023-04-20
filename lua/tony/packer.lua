@@ -1,6 +1,7 @@
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
+require("mason").setup()
 
 return require('packer').startup(function(use)
     --new configuration as of April 2023
@@ -12,7 +13,13 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp' -- Completion
   use 'neovim/nvim-lspconfig' -- LSP
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  use 'williamboman/mason.nvim'
+  --tmux navigator
+  use {"christoomey/vim-tmux-navigator"}
+  use {'liuchengxu/vim-which-key'}
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+}
   use 'williamboman/mason-lspconfig.nvim' 
     use {
     'svrana/neosolarized.nvim',
@@ -57,8 +64,6 @@ return require('packer').startup(function(use)
   use("tpope/vim-fugitive")
 
    -- my previous vim configuration
-   use 'vim-airline/vim-airline' 
-   use 'vim-airline/vim-airline-themes' 
    use 'https://github.com/altercation/vim-colors-solarized.git'
    use 'preservim/nerdcommenter'
    use 'morhetz/gruvbox'
