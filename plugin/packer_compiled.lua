@@ -215,6 +215,11 @@ _G.packer_plugins = {
     path = "/Users/Tony/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["prettier.nvim"] = {
+    loaded = true,
+    path = "/Users/Tony/.local/share/nvim/site/pack/packer/start/prettier.nvim",
+    url = "https://github.com/MunifTanjim/prettier.nvim"
+  },
   ["rose-pine"] = {
     loaded = true,
     path = "/Users/Tony/.local/share/nvim/site/pack/packer/start/rose-pine",
