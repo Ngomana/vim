@@ -15,7 +15,21 @@ return require('packer').startup(function(use)
     use 'MunifTanjim/prettier.nvim'
     --tmux navigator
     use { "christoomey/vim-tmux-navigator" }
-    use { 'liuchengxu/vim-which-key' }
+    --use { 'liuchengxu/vim-which-key' }
+use {
+  "folke/which-key.nvim",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+    use 'nvim-tree/nvim-tree.lua'
+
     use {
         "williamboman/mason.nvim",
         run = ":MasonUpdate" -- :MasonUpdate updates registry contents

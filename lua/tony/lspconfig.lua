@@ -22,7 +22,7 @@ local on_attach = function(client, bufnr)
 
     --formatting
     if client.server_capabilites.documentFormattingProvider then
-        vim.apit.nvim [[augroup Format]]
+        vim.api.nvim [[augroup Format]]
         vim.api.nvim_command [[autocmd! * <buffer>]]
         vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
         vim.api.nvim_command [[augroup END]]
